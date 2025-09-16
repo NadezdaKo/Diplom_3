@@ -5,10 +5,9 @@ from page_objects.order_feed_page import OrderFeedPage
 class TestOrderFeed:
     @allure.title("Увеличение счётчика 'Выполнено за всё время'")
     def test_total_completed_orders_increase(self, login):
-        driver = login
-        main_page = MainPage(driver)
+        main_page = MainPage(login)
         main_page.main_page_loading_wait()
-        order_feed = OrderFeedPage(driver)
+        order_feed = OrderFeedPage(login)
         main_page.main_page_loading_wait()
         main_page.click_order_feed()
         order_feed.order_feed_page_loading_wait()
@@ -27,10 +26,9 @@ class TestOrderFeed:
 
     @allure.title("Увеличение счётчика 'Выполнено за сегодня'")
     def test_today_completed_orders_increase(self, login):
-        driver = login
-        main_page = MainPage(driver)
+        main_page = MainPage(login)
         main_page.main_page_loading_wait()
-        order_feed = OrderFeedPage(driver)
+        order_feed = OrderFeedPage(login)
         main_page.main_page_loading_wait()
         main_page.click_order_feed()
         order_feed.order_feed_page_loading_wait()
@@ -50,13 +48,14 @@ class TestOrderFeed:
 
     @allure.title("Появление номера заказа в 'В работе'")
     def test_order_in_progress(self, login):
-        driver = login
-        main_page = MainPage(driver)
-        order_feed = OrderFeedPage(driver)
+        main_page = MainPage(login)
+        main_page.main_page_loading_wait()
+        order_feed = OrderFeedPage(login)
         main_page.main_page_loading_wait()
         main_page.click_constructor()
         main_page.main_page_loading_wait()
         main_page.drag_ingredient_to_order()
+        main_page.main_page_loading_wait()
         main_page.make_order()
         main_page.main_page_loading_wait()
         order_number = '0' + main_page.get_order_number()

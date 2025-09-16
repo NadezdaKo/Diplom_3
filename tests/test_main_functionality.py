@@ -6,8 +6,7 @@ from curl import main_site
 class TestMainFunctionality:
     @allure.title("Переход по клику на Конструктор")
     def test_click_constructor(self, login):
-        driver = login
-        main_page = MainPage(driver)
+        main_page = MainPage(login)
         main_page.open()
         main_page.main_page_loading_wait()
         main_page.click_order_feed()
@@ -16,8 +15,7 @@ class TestMainFunctionality:
 
     @allure.title("Переход по клику на Ленту заказов")
     def test_click_order_feed(self, login):
-        driver = login
-        main_page = MainPage(driver)
+        main_page = MainPage(login)
         main_page.open()
         main_page.main_page_loading_wait()
         main_page.click_order_feed()
@@ -25,8 +23,7 @@ class TestMainFunctionality:
 
     @allure.title("Открытие деталей ингредиента")
     def test_ingredient_details_modal(self, login):
-        driver = login
-        main_page = MainPage(driver)
+        main_page = MainPage(login)
         main_page.open()
         main_page.main_page_loading_wait()
         main_page.click_ingredient()
@@ -35,8 +32,7 @@ class TestMainFunctionality:
 
     @allure.title("Закрытие модального окна ингредиента")
     def test_close_ingredient_modal(self, login):
-        driver = login
-        main_page = MainPage(driver)
+        main_page = MainPage(login)
         main_page.open()
         main_page.main_page_loading_wait()
         main_page.click_ingredient()
@@ -46,8 +42,7 @@ class TestMainFunctionality:
 
     @allure.title("Увеличение счётчика ингредиента")
     def test_ingredient_counter_increase(self, login):
-        driver = login
-        main_page = MainPage(driver)
+        main_page = MainPage(login)
         main_page.open()
         main_page.main_page_loading_wait()
         initial_count = main_page.get_counter_value()
